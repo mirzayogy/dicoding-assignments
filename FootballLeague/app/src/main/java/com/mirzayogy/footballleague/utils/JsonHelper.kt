@@ -35,7 +35,7 @@ class JsonHelper(private val context: Context) {
                 val description = league.getString("description")
                 val badge = league.getString("badge")
 
-                val leagueResponse = LeagueResponse(id, name, description, badge)
+                val leagueResponse = LeagueResponse(id, name, badge, description)
                 list.add(leagueResponse)
             }
         } catch (e: JSONException) {

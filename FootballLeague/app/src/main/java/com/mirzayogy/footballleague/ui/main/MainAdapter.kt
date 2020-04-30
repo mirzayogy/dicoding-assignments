@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.mirzayogy.footballleague.R
 import com.mirzayogy.footballleague.model.LeagueResponse
+import com.squareup.picasso.Picasso
 import org.jetbrains.anko.*
 
 class MainAdapter(val context: Context, val leagues: ArrayList<LeagueResponse>) :
@@ -21,12 +22,15 @@ class MainAdapter(val context: Context, val leagues: ArrayList<LeagueResponse>) 
         private var leagueName: TextView = itemView.findViewById(MainUI.leagueName)
         private var leagueBadge: ImageView = itemView.findViewById(MainUI.leagueBadge)
 
-        fun bindItems(leagues: LeagueResponse){
+        fun bindItems(league: LeagueResponse,context: Context){
+            val logo = league.badge
+            val resId : Int = context.resources.getIdentifier(logo,"drawable",context.packageName)
             Glide.with(itemView.context)
-                .load(leagues.badge)
+                .load(resId)
                 .into(leagueBadge)
 
-            leagueName.text = leagues.name
+//            resId?.let { Picasso.get().load(it).fit().into(leagueBadge) }
+            leagueName.text = league.name
         }
 
     }
@@ -38,7 +42,7 @@ class MainAdapter(val context: Context, val leagues: ArrayList<LeagueResponse>) 
     override fun getItemCount(): Int = leagues.size
 
     override fun onBindViewHolder(holder: MainViewHolder, position: Int) {
-        holder.bindItems(leagues[position])
+        holder.bindItems(leagues[position],context)
     }
 }
 

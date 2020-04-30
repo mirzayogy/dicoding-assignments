@@ -5,9 +5,9 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class LeagueResponse(
-    var id: String?,
-    var name: String?,
-    var description: String?,
-    var badge: String?
+    var id: String,
+    var name: String,
+    var badge: String,
+    var description: String
 
 ) :Parcelable
