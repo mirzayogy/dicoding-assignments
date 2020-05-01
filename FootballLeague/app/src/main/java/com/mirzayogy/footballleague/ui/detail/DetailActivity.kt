@@ -1,13 +1,15 @@
 package com.mirzayogy.footballleague.ui.detail
 
 import android.graphics.Typeface
+import android.graphics.text.LineBreaker
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Gravity
 import android.view.View
-import android.widget.Toast
-import androidx.annotation.RequiresApi
+import android.widget.ImageView
+import android.widget.TextView
+import com.bumptech.glide.Glide
 import com.mirzayogy.footballleague.R
 import com.mirzayogy.footballleague.model.LeagueResponse
 import org.jetbrains.anko.*
@@ -16,7 +18,9 @@ import java.util.*
 
 class DetailActivity : AppCompatActivity() {
 
-//    @RequiresApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
+    private val leagueBadge = 1
+    private val leagueName = 2
+    private val leagueDescription = 3
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -24,46 +28,60 @@ class DetailActivity : AppCompatActivity() {
         verticalLayout {
             topPadding = 20
             gravity = Gravity.CENTER_HORIZONTAL
-            // TextView untuk menampilkan hasil penghitungan Umur
-            var resultAge = textView {
-                text = "0"
+
+            imageView{
+                id = leagueBadge
+            }.lparams{
+                height = dip(150)
+                width = dip(150)
+                margin = dip(16)
+            }
+
+            textView {
+                id = leagueName
                 textSize = 24F
                 typeface = Typeface.DEFAULT_BOLD
                 textAlignment = View.TEXT_ALIGNMENT_CENTER
             }.lparams {
                 width = matchParent
+                margin = dip(16)
             }
-            // EditText utuk Input tahun lahir
-            val birthYear = editText {
-                hint = "Enter year"
-            }.lparams {
-                width = matchParent
-                height = wrapContent
-                gravity = Gravity.CENTER
-                leftMargin = 10
-                rightMargin = 10
-            }
-            // Button untuk Triger penghitungan Umur
-            val btnFind = button {
-                text = "Find My Age !"
-                // Memberi Event OnClick pada button
-                onClick {
-                    // Dapatkan tahun yang di inputkanz
-                    val year = 20
-                    // Dapatkan tahun sekarang, kurangi dngan variable year
-                    val age = Calendar.getInstance().get(Calendar.YEAR) - year;
-                    // Set hasil umur ke TextView
-                    resultAge.text = age.toString()
+
+            scrollView {
+
+                textView {
+                    id = leagueDescription
+                    textSize = 16F
+//                textAlignment = View.TEXT_ALIGNMENT_TEXT_START
+                }.lparams {
+                    width = matchParent
+                    margin = dip(16)
                 }
-            }.lparams {
-                topMargin = 10
-                width = wrapContent
             }
+
+
         }
 
         val intent = intent
-        var leagueResponse: LeagueResponse
+        val leagueResponse: LeagueResponse?
+
         leagueResponse = intent.getParcelableExtra("league")
-        Toast.makeText(this@DetailActivity,leagueResponse.name,Toast.LENGTH_LONG).show()
+
+        val leagueBadgeIV: ImageView = findViewById(leagueBadge)
+        val leagueNameTV: TextView = findViewById(leagueName)
+        val leagueDescriptionTV: TextView = findViewById(leagueDescription)
+
+        val logo = leagueResponse.badge
+        val resId : Int = resources.getIdentifier(logo,"drawable",packageName)
+
+        Glide.with(this@DetailActivity)
+            .load(resId)
+            .into(leagueBadgeIV)
+
+        leagueNameTV.text = leagueResponse.name
+        leagueDescriptionTV.text = leagueResponse.description
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            leagueDescriptionTV.justificationMode = LineBreaker.JUSTIFICATION_MODE_INTER_WORD
+        }
     }
 }

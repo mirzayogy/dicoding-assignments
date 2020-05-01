@@ -51,7 +51,7 @@ class MainAdapter(private val context: Context, private val leagues: ArrayList<L
                 padding = dip(16)
                 orientation = LinearLayout.VERTICAL
 
-                backgroundColor = ContextCompat.getColor(context, R.color.colorCard)
+                backgroundColor = ContextCompat.getColor(context, color.colorCard)
                 gravity = Gravity.CENTER
 
                 imageView{
@@ -69,12 +69,6 @@ class MainAdapter(private val context: Context, private val leagues: ArrayList<L
                 }.lparams{
                     margin = dip(16)
                 }
-
-//                setOnClickListener {
-////                    startActivity<DetailActivity>("name" to "${name.text}")
-//                    startActivity<DetailActivity>()
-//                }
-
             }
         }
     }
