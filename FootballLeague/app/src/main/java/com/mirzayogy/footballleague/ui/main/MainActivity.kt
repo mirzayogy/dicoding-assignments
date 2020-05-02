@@ -18,7 +18,6 @@ class MainActivity : AppCompatActivity() {
         val leagues: ArrayList<LeagueResponse> = JsonHelper(this@MainActivity).loadLeagues()
 
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
 
         verticalLayout{
             recyclerView{

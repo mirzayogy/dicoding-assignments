@@ -3,18 +3,15 @@ package com.mirzayogy.footballleague.ui.detail
 import android.graphics.Typeface
 import android.graphics.text.LineBreaker
 import android.os.Build
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Gravity
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
-import com.mirzayogy.footballleague.R
 import com.mirzayogy.footballleague.model.LeagueResponse
 import org.jetbrains.anko.*
-import org.jetbrains.anko.sdk27.coroutines.onClick
-import java.util.*
 
 class DetailActivity : AppCompatActivity() {
 
@@ -24,14 +21,13 @@ class DetailActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        // View group
         verticalLayout {
             topPadding = 20
             gravity = Gravity.CENTER_HORIZONTAL
 
-            imageView{
+            imageView {
                 id = leagueBadge
-            }.lparams{
+            }.lparams {
                 height = dip(150)
                 width = dip(150)
                 margin = dip(16)
@@ -52,14 +48,11 @@ class DetailActivity : AppCompatActivity() {
                 textView {
                     id = leagueDescription
                     textSize = 16F
-//                textAlignment = View.TEXT_ALIGNMENT_TEXT_START
                 }.lparams {
                     width = matchParent
                     margin = dip(16)
                 }
             }
-
-
         }
 
         val intent = intent
@@ -72,7 +65,7 @@ class DetailActivity : AppCompatActivity() {
         val leagueDescriptionTV: TextView = findViewById(leagueDescription)
 
         val logo = leagueResponse.badge
-        val resId : Int = resources.getIdentifier(logo,"drawable",packageName)
+        val resId: Int = resources.getIdentifier(logo, "drawable", packageName)
 
         Glide.with(this@DetailActivity)
             .load(resId)
@@ -83,5 +76,8 @@ class DetailActivity : AppCompatActivity() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             leagueDescriptionTV.justificationMode = LineBreaker.JUSTIFICATION_MODE_INTER_WORD
         }
+
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
     }
 }
