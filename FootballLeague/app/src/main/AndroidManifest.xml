@@ -10,8 +10,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.detail.DetailActivity"
-            android:parentActivityName=".ui.main.MainActivity"></activity>
+        <activity
+            android:name=".ui.matches.MatchesActivity"
+            android:label="@string/title_activity_matches"
+            android:parentActivityName=".ui.main.MainActivity" />
+        <activity
+            android:name=".ui.detail.DetailActivity"
+            android:parentActivityName=".ui.main.MainActivity" />
         <activity android:name=".ui.main.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

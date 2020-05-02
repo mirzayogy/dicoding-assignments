@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Football League</string>
+    <string name="title_activity_matches">MatchesActivity</string>
+    <string name="next_match">Next Match</string>
+    <string name="previous_match">Previous Match</string>
+    <string name="league_badge">League Badge</string>
 </resources>
