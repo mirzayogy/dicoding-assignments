@@ -8,11 +8,11 @@ data class EventResponse(
     var idEvent: String,
     var strHomeTeam: String,
     var idHomeTeam: String,
-    var intHomeScore: String,
+    var intHomeScore: String?,
     var strAwayTeam: String,
-    var idrAwayTeam: String,
-    var intAwayScore: String,
-    var intSpectators:String,
+    var idAwayTeam: String,
+    var intAwayScore: String?,
+    var intSpectators:String?,
     var dateEvent: String,
     var strTime: String
 ) : Parcelable
