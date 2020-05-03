@@ -1,4 +1,4 @@
-package com.mirzayogy.footballleague.model
+package com.mirzayogy.footballleague.data.source.remote.response
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize

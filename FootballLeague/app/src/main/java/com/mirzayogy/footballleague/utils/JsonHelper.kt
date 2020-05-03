@@ -1,7 +1,7 @@
 package com.mirzayogy.footballleague.utils
 
 import android.content.Context
-import com.mirzayogy.footballleague.model.LeagueResponse
+import com.mirzayogy.footballleague.data.source.remote.response.LeagueResponse
 import org.json.JSONException
 import org.json.JSONObject
 import java.io.IOException

@@ -10,7 +10,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
-import com.mirzayogy.footballleague.model.LeagueResponse
+import com.mirzayogy.footballleague.data.source.remote.response.LeagueResponse
 import org.jetbrains.anko.*
 
 class DetailActivity : AppCompatActivity() {

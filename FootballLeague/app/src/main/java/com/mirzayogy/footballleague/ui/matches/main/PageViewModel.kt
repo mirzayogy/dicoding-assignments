@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
-import com.mirzayogy.footballleague.model.LeagueResponse
+import com.mirzayogy.footballleague.data.source.remote.response.LeagueResponse
 
 class PageViewModel : ViewModel() {
 

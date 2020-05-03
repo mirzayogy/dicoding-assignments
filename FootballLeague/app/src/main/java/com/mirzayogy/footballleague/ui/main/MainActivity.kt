@@ -2,11 +2,8 @@ package com.mirzayogy.footballleague.ui.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.mirzayogy.footballleague.R
-import com.mirzayogy.footballleague.model.LeagueResponse
+import com.mirzayogy.footballleague.data.source.remote.response.LeagueResponse
 import com.mirzayogy.footballleague.ui.detail.DetailActivity
 import com.mirzayogy.footballleague.ui.matches.MatchesActivity
 import com.mirzayogy.footballleague.utils.JsonHelper

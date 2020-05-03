@@ -1,4 +1,4 @@
-package com.mirzayogy.footballleague.model
+package com.mirzayogy.footballleague.data.source.remote.response
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
@@ -8,8 +8,11 @@ data class EventResponse(
     var idEvent: String,
     var strHomeTeam: String,
     var idHomeTeam: String,
+    var intHomeScore: String,
     var strAwayTeam: String,
     var idrAwayTeam: String,
+    var intAwayScore: String,
+    var intSpectators:String,
     var dateEvent: String,
     var strTime: String
 ) : Parcelable

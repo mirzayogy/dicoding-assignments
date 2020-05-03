@@ -8,14 +8,11 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.core.content.ContextCompat
-import androidx.core.view.marginTop
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.mirzayogy.footballleague.R
 import com.mirzayogy.footballleague.R.*
-import com.mirzayogy.footballleague.model.LeagueResponse
+import com.mirzayogy.footballleague.data.source.remote.response.LeagueResponse
 import org.jetbrains.anko.*
-import com.mirzayogy.footballleague.ui.detail.DetailActivity as DetailActivity
 
 class MainAdapter(private val context: Context, private val leagues: ArrayList<LeagueResponse>, private val listener: (LeagueResponse) -> Unit) :
         RecyclerView.Adapter<MainAdapter.MainViewHolder>(){

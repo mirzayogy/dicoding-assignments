@@ -11,7 +11,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.google.android.material.tabs.TabLayout
 import com.mirzayogy.footballleague.R
-import com.mirzayogy.footballleague.model.LeagueResponse
+import com.mirzayogy.footballleague.data.source.remote.response.LeagueResponse
 import com.mirzayogy.footballleague.ui.matches.main.SectionsPagerAdapter
 import kotlinx.android.synthetic.main.activity_matches.*
 
