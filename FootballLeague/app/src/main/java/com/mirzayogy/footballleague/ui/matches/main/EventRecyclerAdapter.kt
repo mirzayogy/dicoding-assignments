@@ -32,6 +32,8 @@ class EventRecyclerAdapter : RecyclerView.Adapter<EventRecyclerAdapter.EventView
             with(itemView){
                 home_team.text = eventResponse.strHomeTeam
                 away_team.text = eventResponse.strAwayTeam
+                dateEvent.text = eventResponse.dateEvent
+                strTime.text = eventResponse.strTime
             }
         }
     }
