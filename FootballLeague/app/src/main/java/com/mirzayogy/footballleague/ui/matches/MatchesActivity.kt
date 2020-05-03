@@ -29,10 +29,25 @@ class MatchesActivity : AppCompatActivity() {
         val tabs: TabLayout = findViewById(R.id.tabs)
         tabs.setupWithViewPager(viewPager)
 
-        val intent = intent
-        val leagueResponse: LeagueResponse?
-        leagueResponse = intent.getParcelableExtra("league")
+//        val viewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory())[DetailCourseViewModel::class.java]
 
+        val leagueResponse: LeagueResponse?
+        val intent = intent
+        val extras = intent.extras
+        if (extras != null) {
+            leagueResponse = intent.getParcelableExtra("league")
+            if (leagueResponse != null) {
+//                viewModel.setSelectedCourse(courseId)
+//                val modules = viewModel.getModules()
+//                adapter.setModules(modules)
+                populateLeague(leagueResponse)
+            }
+        }
+
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+    }
+
+    private fun populateLeague(leagueResponse: LeagueResponse) {
         leagueName.text = leagueResponse.name
         leagueDescription.text = leagueResponse.description
         leagueDescription.movementMethod = ScrollingMovementMethod()
@@ -44,8 +59,6 @@ class MatchesActivity : AppCompatActivity() {
                 RequestOptions.placeholderOf(R.drawable.ic_loading)
                     .error(R.drawable.ic_error))
             .into(leagueBadge)
-
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

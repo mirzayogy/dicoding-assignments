@@ -9,6 +9,7 @@ import com.mirzayogy.footballleague.model.LeagueResponse
 class PageViewModel : ViewModel() {
 
     private val _index = MutableLiveData<Int>()
+    var league: MutableLiveData<LeagueResponse>? = null
     val text: LiveData<String> = Transformations.map(_index) {
         "Hello world from section: $it"
     }

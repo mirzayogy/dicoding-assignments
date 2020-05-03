@@ -7,8 +7,11 @@ import androidx.lifecycle.ViewModel
 import com.mirzayogy.footballleague.model.LeagueResponse
 
 class MatchesViewModel : ViewModel() {
-    private val _leagueResponse = MutableLiveData<LeagueResponse>()
-//    var league: LiveData<LeagueResponse> = Transformations.map(_leagueResponse) {
-//
-//    }
+    private lateinit var leagueId: String
+
+    fun setSelectedLeague(leagueId:String){
+        this.leagueId = leagueId
+    }
+
+//    fun getNextMatches():List
 }
