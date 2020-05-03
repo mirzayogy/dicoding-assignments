@@ -1,23 +1,28 @@
 package com.mirzayogy.footballleague.ui.matches.main
 
 import android.os.Bundle
+import android.util.EventLog
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
 import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.mirzayogy.footballleague.R
 import com.mirzayogy.footballleague.ui.matches.MatchesViewModel
+import kotlinx.android.synthetic.main.fragment_matches.*
 
 class PlaceholderFragment : Fragment() {
 
     private var progressBar: ProgressBar? = null
     private lateinit var pageViewModel: PageViewModel
     private lateinit var matchesViewModel: MatchesViewModel
+    private lateinit var eventRecyclerAdapter: EventRecyclerAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,8 +45,22 @@ class PlaceholderFragment : Fragment() {
         })
 
         showLoading(true)
+
+        eventRecyclerAdapter = EventRecyclerAdapter()
+        eventRecyclerAdapter.notifyDataSetChanged()
+
+
+
         matchesViewModel.setSelectedLeague("4328")
         matchesViewModel.setNextEvent()
+        matchesViewModel.getNextEvent().observe(viewLifecycleOwner, Observer { eventResponse ->
+            if (eventResponse != null) {
+                eventRecyclerAdapter.setData(eventResponse)
+                recyclerView.layoutManager = LinearLayoutManager(context)
+                recyclerView.adapter = eventRecyclerAdapter
+                showLoading(false)
+            }
+        })
 
 
         return root
