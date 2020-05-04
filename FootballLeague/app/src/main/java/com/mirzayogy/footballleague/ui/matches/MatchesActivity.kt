@@ -18,18 +18,10 @@ import kotlinx.android.synthetic.main.activity_matches.*
 
 class MatchesActivity : AppCompatActivity() {
 
-    private lateinit var matchesViewModel: MatchesViewModel
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_matches)
-        val sectionsPagerAdapter = SectionsPagerAdapter(this, supportFragmentManager)
-        val viewPager: ViewPager = findViewById(R.id.view_pager)
-        viewPager.adapter = sectionsPagerAdapter
-        val tabs: TabLayout = findViewById(R.id.tabs)
-        tabs.setupWithViewPager(viewPager)
 
-//        val viewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory())[DetailCourseViewModel::class.java]
 
         val leagueResponse: LeagueResponse?
         val intent = intent
@@ -37,10 +29,12 @@ class MatchesActivity : AppCompatActivity() {
         if (extras != null) {
             leagueResponse = intent.getParcelableExtra("league")
             if (leagueResponse != null) {
-//                viewModel.setSelectedCourse(courseId)
-//                val modules = viewModel.getModules()
-//                adapter.setModules(modules)
                 populateLeague(leagueResponse)
+                val sectionsPagerAdapter = SectionsPagerAdapter(this, leagueResponse.id, supportFragmentManager)
+                val viewPager: ViewPager = findViewById(R.id.view_pager)
+                viewPager.adapter = sectionsPagerAdapter
+                val tabs: TabLayout = findViewById(R.id.tabs)
+                tabs.setupWithViewPager(viewPager)
             }
         }
 
@@ -49,8 +43,6 @@ class MatchesActivity : AppCompatActivity() {
 
     private fun populateLeague(leagueResponse: LeagueResponse) {
         leagueName.text = leagueResponse.name
-        leagueDescription.text = leagueResponse.description
-        leagueDescription.movementMethod = ScrollingMovementMethod()
 
         val resId: Int = resources.getIdentifier(leagueResponse.badge, "drawable", packageName)
         Glide.with(this)

@@ -49,9 +49,11 @@ class PlaceholderFragment : Fragment() {
         eventRecyclerAdapter = EventRecyclerAdapter()
         eventRecyclerAdapter.notifyDataSetChanged()
 
+        val idLeague = arguments?.getString(ID_LEAGUE)
 
-
-        matchesViewModel.setSelectedLeague("4328")
+        if (idLeague != null) {
+            matchesViewModel.setSelectedLeague(idLeague)
+        }
         matchesViewModel.setNextEvent()
         matchesViewModel.getNextEvent().observe(viewLifecycleOwner, Observer { eventResponse ->
             if (eventResponse != null) {
@@ -80,16 +82,18 @@ class PlaceholderFragment : Fragment() {
          * fragment.
          */
         private const val ARG_SECTION_NUMBER = "section_number"
+        private const val ID_LEAGUE = "id_league"
 
         /**
          * Returns a new instance of this fragment for the given section
          * number.
          */
         @JvmStatic
-        fun newInstance(sectionNumber: Int): PlaceholderFragment {
+        fun newInstance(sectionNumber: Int, idLeague:String): PlaceholderFragment {
             return PlaceholderFragment().apply {
                 arguments = Bundle().apply {
                     putInt(ARG_SECTION_NUMBER, sectionNumber)
+                    putString(ID_LEAGUE, idLeague)
                 }
             }
         }

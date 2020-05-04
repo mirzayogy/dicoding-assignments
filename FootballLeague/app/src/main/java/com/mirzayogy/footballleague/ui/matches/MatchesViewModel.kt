@@ -16,8 +16,7 @@ class MatchesViewModel : ViewModel() {
     private lateinit var leagueId: String
     private val listNextEvents = MutableLiveData<ArrayList<EventResponse>>()
     lateinit var retrofitServices : RetrofitServices
-
-
+    lateinit var retrofitServices2 : RetrofitServices
 
     fun setSelectedLeague(leagueId:String){
         this.leagueId = leagueId
