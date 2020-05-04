@@ -34,6 +34,8 @@ class EventRecyclerAdapter : RecyclerView.Adapter<EventRecyclerAdapter.EventView
                 away_team.text = eventResponse.strAwayTeam
                 date_event.text = eventResponse.dateEvent
                 str_time.text = eventResponse.strTime
+                home_score.text = eventResponse.intHomeScore?: "-"
+                away_score.text = eventResponse.intAwayScore?: "-"
             }
         }
     }

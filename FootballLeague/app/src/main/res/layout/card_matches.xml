@@ -69,7 +69,8 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/badge_english_premier_league" />
+                    app:srcCompat="@drawable/home_logo"
+                    android:contentDescription="@string/home_logo" />
 
                 <TextView
                     android:id="@+id/home_score"
@@ -89,7 +90,7 @@
                 android:layout_weight="1">
 
                 <TextView
-                    android:id="@+id/home_score2"
+                    android:id="@+id/away_score"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
@@ -120,7 +121,8 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/badge_italian_serie_a" />
+                    app:srcCompat="@drawable/away_logo"
+                    android:contentDescription="@string/away_logo" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </LinearLayout>

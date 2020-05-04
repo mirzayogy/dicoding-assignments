@@ -7,7 +7,10 @@ import retrofit2.http.*
 
 interface RetrofitServices {
     @GET("eventsnextleague.php?")
-    fun getNextEvent(@Query("id") idEvent: String): Call<EventEntityResponse>
+    fun getNextEvent(@Query("id") idLeague: String): Call<EventEntityResponse>
+
+    @GET("eventspastleague.php?")
+    fun getLastEvent(@Query("id") idLeague: String): Call<EventEntityResponse>
 
     @GET("lookupteam.php?id=133604")
     fun getTeamDetail(@Query("id") idEvent: String): Call<EventEntityResponse>

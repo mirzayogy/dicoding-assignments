@@ -39,6 +39,7 @@ class MatchesActivity : AppCompatActivity() {
         }
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setDisplayShowTitleEnabled(false);
     }
 
     private fun populateLeague(leagueResponse: LeagueResponse) {

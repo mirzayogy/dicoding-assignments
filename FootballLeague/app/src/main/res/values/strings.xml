@@ -4,4 +4,6 @@
     <string name="next_match">Next Match</string>
     <string name="previous_match">Previous Match</string>
     <string name="league_badge">League Badge</string>
+    <string name="home_logo">Home Logo</string>
+    <string name="away_logo">Away Logo</string>
 </resources>
