@@ -1,7 +1,6 @@
 package com.mirzayogy.footballleague.ui.matches
 
 import android.os.Bundle
-import android.text.method.ScrollingMovementMethod
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
@@ -43,7 +42,7 @@ class MatchesActivity : AppCompatActivity() {
     }
 
     private fun populateLeague(leagueResponse: LeagueResponse) {
-        leagueName.text = leagueResponse.name
+        separator.text = leagueResponse.name
 
         val resId: Int = resources.getIdentifier(leagueResponse.badge, "drawable", packageName)
         Glide.with(this)

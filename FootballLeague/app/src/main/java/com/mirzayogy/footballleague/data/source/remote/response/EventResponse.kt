@@ -9,10 +9,16 @@ data class EventResponse(
     var strHomeTeam: String,
     var idHomeTeam: String,
     var intHomeScore: String?,
+    var strHomeGoalDetails: String?,
     var strAwayTeam: String,
     var idAwayTeam: String,
     var intAwayScore: String?,
+    var strAwayGoalDetails: String?,
     var intSpectators:String?,
     var dateEvent: String,
-    var strTime: String
+    var strTime: String,
+    var strEvent: String,
+    var strLeague: String,
+    var homeBadge: String,
+    var awayBadge:String
 ) : Parcelable

@@ -5,17 +5,25 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.mirzayogy.footballleague.data.source.local.entity.EventEntityResponse
+import com.mirzayogy.footballleague.data.source.local.entity.TeamEntityResponse
 import com.mirzayogy.footballleague.data.source.remote.response.EventResponse
 import id.co.teknobara.sirintik.data.source.remote.RetrofitRepository
-import id.co.teknobara.sirintik.data.source.remote.RetrofitServices
+import com.mirzayogy.footballleague.data.source.remote.RetrofitServices
+import com.mirzayogy.footballleague.data.source.remote.response.TeamResponse
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import rx.Observable
+import rx.android.schedulers.AndroidSchedulers
+import rx.schedulers.Schedulers
+import kotlin.collections.ArrayList
 
 class MatchesViewModel : ViewModel() {
     private lateinit var leagueId: String
     private val listNextEvents = MutableLiveData<ArrayList<EventResponse>>()
     private val listLastEvents = MutableLiveData<ArrayList<EventResponse>>()
+    private val listHome = mutableListOf<String>()
+    private val listAway = mutableListOf<String>()
     lateinit var retrofitServices : RetrofitServices
 
     fun setSelectedLeague(leagueId:String){
@@ -23,36 +31,40 @@ class MatchesViewModel : ViewModel() {
     }
 
     fun setNextEvent(){
-        val list= ArrayList<EventResponse>()
-        this.retrofitServices = RetrofitRepository.create()
-        this.retrofitServices.getNextEvent(this.leagueId).enqueue(object : Callback<EventEntityResponse>{
-            override fun onFailure(call: Call<EventEntityResponse>, t: Throwable) {
-                Log.e("RETROFIT onFailure", "errornya ${t.message}")
-            }
 
-            override fun onResponse(call: Call<EventEntityResponse>, response: Response<EventEntityResponse>) {
-                if(response.isSuccessful){
-                    val data = response.body()?.getResults()
+        this.retrofitServices = RetrofitRepository.createRX()
+//        this.retrofitServices.getNextEventRX(this.leagueId)
+//            .subscribeOn(Schedulers.newThread())
+//            .observeOn(AndroidSchedulers.mainThread())
+//            .subscribe(
+//                { data ->
+//                    listNextEvents.postValue(data.getResults())
+//                },
+//                { error ->
+//                    Log.e("Error", error.message)
+//                }
+//            )
+        this.retrofitServices.getNextEventRX(this.leagueId)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .flatMap { Observable.from(it.getResults()) }
+            .flatMap {itNext ->
+                Observable.zip(
+                    retrofitServices.getTeamDetailRX(itNext.idHomeTeam),
+                    retrofitServices.getTeamDetailRX(itNext.idAwayTeam)
+                ) { homeTeam: TeamEntityResponse, awayTeam: TeamEntityResponse ->
 
-                    data?.map{
-                        val eventResponse = EventResponse(
-                            it.idEvent,
-                            it.strHomeTeam,
-                            it.idHomeTeam,
-                            it.intHomeScore,
-                            it.strAwayTeam,
-                            it.idAwayTeam,
-                            it.intAwayScore,
-                            it.intSpectators,
-                            it.dateEvent,
-                            it.strTime
-                        )
-                        list.add(eventResponse)
-                    }
-                    listNextEvents.postValue(list)
+                    homeTeam.getResults()?.get(0)?.strTeamBadge?.let { listHome.add(it) }
+                    awayTeam.getResults()?.get(0)?.strTeamBadge?.let { listAway.add(it) }
+//                    listAway.add(awayTeam.strTeamBadge)
+//                    listNext.add(itNext)
+//                    setDate.add(itNext.dateEvent)
+//                    listStadium.add(homeTeam.teams[0].strStadium)
+
                 }
+
+            }.doOnCompleted {
             }
-        })
     }
 
     fun setLastEvent(){
@@ -73,12 +85,18 @@ class MatchesViewModel : ViewModel() {
                             it.strHomeTeam,
                             it.idHomeTeam,
                             it.intHomeScore,
+                            it.strHomeGoalDetails,
                             it.strAwayTeam,
                             it.idAwayTeam,
                             it.intAwayScore,
+                            it.strAwayGoalDetails,
                             it.intSpectators,
                             it.dateEvent,
-                            it.strTime
+                            it.strTime,
+                            it.strEvent,
+                            it.strLeague,
+                            "",
+                            ""
                         )
                         list.add(eventResponse)
                     }
