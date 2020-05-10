@@ -9,6 +9,8 @@ import com.mirzayogy.footballleague.R
 import com.mirzayogy.footballleague.data.source.remote.response.EventResponse
 import kotlinx.android.synthetic.main.activity_matches_detail.*
 import androidx.lifecycle.Observer
+import com.mirzayogy.footballleague.utils.DateHelper
+import kotlinx.android.synthetic.main.card_matches.view.*
 
 
 class MatchesDetailActivity : AppCompatActivity() {
@@ -27,10 +29,19 @@ class MatchesDetailActivity : AppCompatActivity() {
 
 
 
-        str_event.text = eventResponse.strEvent
+        str_event.text = eventResponse.dateEvent?.let { DateHelper.customDate(it) }
         str_league.text = eventResponse.strLeague
         str_home.text = eventResponse.strHomeTeam
         str_away.text = eventResponse.strAwayTeam
+
+        int_home_score.text = eventResponse.intHomeScore?: "-"
+        int_away_score.text = eventResponse.intAwayScore?: "-"
+
+        str_home_goal_details.text = eventResponse.strHomeGoalDetails?: "-"
+        str_away_goal_details.text = eventResponse.strAwayGoalDetails?: "-"
+
+        int_spectators.text = eventResponse.intSpectators?: "-"
+
 
         matchesDetailViewModel.setStrHomeBadge(eventResponse.idHomeTeam)
         matchesDetailViewModel.getStrHomeBadge().observe(this, Observer{
