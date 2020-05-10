@@ -1,9 +1,8 @@
-package com.mirzayogy.footballleague.ui.matches.main
+package com.mirzayogy.footballleague.ui.search
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.mirzayogy.footballleague.R
 import com.mirzayogy.footballleague.data.source.remote.response.EventResponse
@@ -11,10 +10,8 @@ import com.mirzayogy.footballleague.ui.matchesdetail.MatchesDetailActivity
 import com.mirzayogy.footballleague.utils.DateHelper
 import kotlinx.android.synthetic.main.card_matches.view.*
 import org.jetbrains.anko.startActivity
-import java.util.*
-import kotlin.collections.ArrayList
 
-class EventRecyclerAdapter : RecyclerView.Adapter<EventRecyclerAdapter.EventViewHolder>() {
+class SearchAdapter : RecyclerView.Adapter<SearchAdapter.EventViewHolder>() {
     private val mData = ArrayList<EventResponse>()
     fun setData(items: ArrayList<EventResponse>) {
         mData.clear()
@@ -44,6 +41,7 @@ class EventRecyclerAdapter : RecyclerView.Adapter<EventRecyclerAdapter.EventView
                 away_score.text = eventResponse.intAwayScore?: "-"
 
                 setOnClickListener{
+//                    Toast.makeText(context,eventResponse.strHomeTeam,Toast.LENGTH_SHORT).show()
                     context.startActivity<MatchesDetailActivity>("match" to eventResponse)
                 }
             }

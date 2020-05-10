@@ -7,7 +7,7 @@ class TeamEntityResponse {
     @SerializedName("teams")
     private val results: ArrayList<TeamResponse>? = null
 
-    fun getResults() : ArrayList<TeamResponse>?{
+    fun getResults(): ArrayList<TeamResponse>? {
         return results
     }
 }

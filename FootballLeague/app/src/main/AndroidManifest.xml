@@ -13,10 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity
-            android:name=".ui.coba.CobaActivity"
-            android:label="@string/title_activity_coba"></activity>
-        <activity android:name=".ui.coba.MainActivity" />
+        <activity android:name=".ui.search.SearchActivity"></activity>
         <activity android:name=".ui.matchesdetail.MatchesDetailActivity" />
         <activity
             android:name=".ui.matches.MatchesActivity"

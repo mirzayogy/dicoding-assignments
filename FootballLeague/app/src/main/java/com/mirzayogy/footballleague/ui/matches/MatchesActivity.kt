@@ -2,7 +2,9 @@ package com.mirzayogy.footballleague.ui.matches
 
 import android.os.Bundle
 import android.view.Menu
+import android.view.MenuInflater
 import android.view.MenuItem
+import android.widget.SearchView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager.widget.ViewPager
@@ -12,7 +14,9 @@ import com.google.android.material.tabs.TabLayout
 import com.mirzayogy.footballleague.R
 import com.mirzayogy.footballleague.data.source.remote.response.LeagueResponse
 import com.mirzayogy.footballleague.ui.matches.main.SectionsPagerAdapter
+import com.mirzayogy.footballleague.ui.search.SearchActivity
 import kotlinx.android.synthetic.main.activity_matches.*
+import org.jetbrains.anko.startActivity
 
 
 class MatchesActivity : AppCompatActivity() {
@@ -53,19 +57,26 @@ class MatchesActivity : AppCompatActivity() {
             .into(imgHome)
     }
 
+
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        super.onCreateOptionsMenu(menu)
         menuInflater.inflate(R.menu.top_menu, menu)
-        return super.onCreateOptionsMenu(menu)
-    }
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        setMode(item.itemId)
-        return super.onOptionsItemSelected(item)
-    }
-    private fun setMode(selectedMode: Int) {
-        when (selectedMode) {
-            R.id.search -> {
-                Toast.makeText(this,"Search",Toast.LENGTH_SHORT).show()
+
+        val searchView = menu?.findItem(R.id.search)?.actionView as SearchView?
+
+        searchView?.queryHint = "Search matches"
+
+        searchView?.setOnQueryTextListener(object : android.widget.SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(eventKeyword: String): Boolean {
+                startActivity<SearchActivity>("eventKeyword" to eventKeyword)
+                return false
             }
-        }
+
+            override fun onQueryTextChange(newText: String): Boolean {
+
+                return false
+            }
+        })
+        return true
     }
 }

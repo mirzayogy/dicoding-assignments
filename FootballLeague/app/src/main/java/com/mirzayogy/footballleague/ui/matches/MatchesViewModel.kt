@@ -82,5 +82,8 @@ class MatchesViewModel : ViewModel() {
     fun getNextEvent(): LiveData<ArrayList<EventResponse>> = listNextEvents
     fun getLastEvent(): LiveData<ArrayList<EventResponse>> = listLastEvents
 
-
+    override fun onCleared() {
+        super.onCleared()
+        compositeDisposable.dispose()
+    }
 }
