@@ -18,7 +18,5 @@ data class EventResponse(
     var dateEvent: String,
     var strTime: String,
     var strEvent: String,
-    var strLeague: String,
-    var homeBadge: String,
-    var awayBadge:String
+    var strLeague: String
 ) : Parcelable

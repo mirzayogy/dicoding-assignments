@@ -6,4 +6,8 @@
     <string name="league_badge">League Badge</string>
     <string name="home_logo">Home Logo</string>
     <string name="away_logo">Away Logo</string>
+    <string name="title_activity_coba">MainActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
 </resources>

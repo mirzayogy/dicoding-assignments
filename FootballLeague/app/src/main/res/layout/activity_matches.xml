@@ -24,7 +24,7 @@
                     android:orientation="horizontal">
 
                     <ImageView
-                        android:id="@+id/leagueBadge"
+                        android:id="@+id/imgHome"
                         android:layout_width="100dp"
                         android:layout_height="0dp"
                         android:layout_marginStart="16dp"
@@ -48,7 +48,7 @@
                         android:textStyle="bold"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/leagueBadge"
+                        app:layout_constraintStart_toEndOf="@+id/imgHome"
                         app:layout_constraintTop_toTopOf="parent"
                         tools:text="@string/app_name" />
 

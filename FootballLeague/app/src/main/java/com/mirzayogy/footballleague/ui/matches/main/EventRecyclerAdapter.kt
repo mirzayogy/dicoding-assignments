@@ -3,10 +3,13 @@ package com.mirzayogy.footballleague.ui.matches.main
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.mirzayogy.footballleague.R
 import com.mirzayogy.footballleague.data.source.remote.response.EventResponse
+import com.mirzayogy.footballleague.ui.matchesdetail.MatchesDetailActivity
 import kotlinx.android.synthetic.main.card_matches.view.*
+import org.jetbrains.anko.startActivity
 
 class EventRecyclerAdapter : RecyclerView.Adapter<EventRecyclerAdapter.EventViewHolder>() {
     private val mData = ArrayList<EventResponse>()
@@ -36,6 +39,11 @@ class EventRecyclerAdapter : RecyclerView.Adapter<EventRecyclerAdapter.EventView
                 str_time.text = eventResponse.strTime
                 home_score.text = eventResponse.intHomeScore?: "-"
                 away_score.text = eventResponse.intAwayScore?: "-"
+
+                setOnClickListener{
+//                    Toast.makeText(context,eventResponse.strHomeTeam,Toast.LENGTH_SHORT).show()
+                    context.startActivity<MatchesDetailActivity>("match" to eventResponse)
+                }
             }
         }
     }

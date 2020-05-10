@@ -38,8 +38,8 @@ class MainAdapter(private val context: Context, private val leagues: ArrayList<L
 
     class MainUI : AnkoComponent<ViewGroup>{
         companion object{
-            val leagueBadge = 1
-            val leagueName = 2
+            const val leagueBadge = 1
+            const val leagueName = 2
         }
 
         override fun createView(ui: AnkoContext<ViewGroup>): View = with(ui){

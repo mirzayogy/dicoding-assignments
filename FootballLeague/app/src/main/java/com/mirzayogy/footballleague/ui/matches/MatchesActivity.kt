@@ -50,7 +50,7 @@ class MatchesActivity : AppCompatActivity() {
             .apply(
                 RequestOptions.placeholderOf(R.drawable.ic_loading)
                     .error(R.drawable.ic_error))
-            .into(leagueBadge)
+            .into(imgHome)
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
