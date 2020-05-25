@@ -1,5 +1,7 @@
 function main() {
 
+    const baseUrl = "https://web-server-book-dicoding.appspot.com";
+
     const getBook = () => {
         // membuat instance dari XMLHttpRequest
     const xhr = new XMLHttpRequest();
@@ -19,7 +21,7 @@ function main() {
     }
  
      // Membuat GET request dan menetapkan target URL
-     xhr.open("GET", "https://web-server-book-dicoding.appspot.com/list");
+     xhr.open("GET", `${baseUrl}/list`);
      // Mengirimkan request
      xhr.send();
     };
@@ -41,7 +43,7 @@ function main() {
         }
     
         // Membuat POST request dan menetapkan target URL
-        xhr.open("POST", "https://web-server-book-dicoding.appspot.com/add");
+        xhr.open("POST", `${baseUrl}/add`);
             
         // Mementapkan properti Content-Type dan X-Auth-Token pada Header request
         xhr.setRequestHeader("Content-Type", "application/json");
