@@ -5,7 +5,8 @@ import java.util.*
 
 object DateHelper {
 
-    fun customDate(date: Date): String {
-        return SimpleDateFormat("EEEE, dd MMMM yyyy", Locale.getDefault()).format(date)
+    fun customDate(date: String): String {
+//        return SimpleDateFormat("EEEE, dd MMMM yyyy", Locale.getDefault()).format(date)
+        return date
     }
 }

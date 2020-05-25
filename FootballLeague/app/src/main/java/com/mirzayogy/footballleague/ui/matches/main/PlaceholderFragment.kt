@@ -14,6 +14,8 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.mirzayogy.footballleague.R
+import com.mirzayogy.footballleague.data.source.local.sqlite.Favorite
+import com.mirzayogy.footballleague.data.source.remote.response.EventResponse
 import com.mirzayogy.footballleague.ui.matches.MatchesViewModel
 import kotlinx.android.synthetic.main.fragment_matches.*
 
@@ -49,25 +51,40 @@ class PlaceholderFragment : Fragment() {
         }
         matchesViewModel.setNextEvent()
         matchesViewModel.setLastEvent()
+        matchesViewModel.setFavoriteEvent(context)
 
-        if(section==1){
-            matchesViewModel.getNextEvent().observe(viewLifecycleOwner, Observer { eventResponse ->
-                if (eventResponse != null) {
-                    eventRecyclerAdapter.setData(eventResponse)
-                    recyclerView.layoutManager = LinearLayoutManager(context)
-                    recyclerView.adapter = eventRecyclerAdapter
-                    showLoading(false)
-                }
-            })
-        }else{
-            matchesViewModel.getLastEvent().observe(viewLifecycleOwner, Observer { eventResponse ->
-                if (eventResponse != null) {
-                    eventRecyclerAdapter.setData(eventResponse)
-                    recyclerView.layoutManager = LinearLayoutManager(context)
-                    recyclerView.adapter = eventRecyclerAdapter
-                    showLoading(false)
-                }
-            })
+        when (section) {
+            1 -> {
+                matchesViewModel.getNextEvent().observe(viewLifecycleOwner, Observer { eventResponse ->
+                    if (eventResponse != null) {
+                        eventRecyclerAdapter.setData(eventResponse)
+                        recyclerView.layoutManager = LinearLayoutManager(context)
+                        recyclerView.adapter = eventRecyclerAdapter
+                        showLoading(false)
+                    }
+                })
+            }
+            2 -> {
+                matchesViewModel.getLastEvent().observe(viewLifecycleOwner, Observer { eventResponse ->
+                    if (eventResponse != null) {
+                        eventRecyclerAdapter.setData(eventResponse)
+                        recyclerView.layoutManager = LinearLayoutManager(context)
+                        recyclerView.adapter = eventRecyclerAdapter
+                        showLoading(false)
+                    }
+                })
+            }
+            else -> {
+
+                matchesViewModel.getFavoriteEvent().observe(viewLifecycleOwner, Observer { eventResponse ->
+                    if (eventResponse != null) {
+                        eventRecyclerAdapter.setData(eventResponse)
+                        recyclerView.layoutManager = LinearLayoutManager(context)
+                        recyclerView.adapter = eventRecyclerAdapter
+                        showLoading(false)
+                    }
+                })
+            }
         }
 
 

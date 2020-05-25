@@ -1,16 +1,23 @@
 package com.mirzayogy.footballleague.ui.matches
 
+import android.app.Application
+import android.content.Context
 import android.util.Log
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.mirzayogy.footballleague.data.source.local.entity.EventEntityResponse
+import com.mirzayogy.footballleague.data.source.local.sqlite.Favorite
+import com.mirzayogy.footballleague.data.source.local.sqlite.database
 import com.mirzayogy.footballleague.data.source.remote.RetrofitServices
 import com.mirzayogy.footballleague.data.source.remote.response.EventResponse
 import com.mirzayogy.footballleague.data.source.remote.RetrofitRepository
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
+import org.jetbrains.anko.db.classParser
+import org.jetbrains.anko.db.select
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -19,8 +26,13 @@ class MatchesViewModel : ViewModel() {
     private lateinit var leagueId: String
     private val listNextEvents = MutableLiveData<ArrayList<EventResponse>>()
     private val listLastEvents = MutableLiveData<ArrayList<EventResponse>>()
+    private val listFavoriteEvents = MutableLiveData<ArrayList<EventResponse>>()
+
     private lateinit var retrofitServices : RetrofitServices
     private val compositeDisposable = CompositeDisposable()
+
+
+
 
 
     fun setSelectedLeague(leagueId:String){
@@ -79,8 +91,19 @@ class MatchesViewModel : ViewModel() {
         })
     }
 
+    fun setFavoriteEvent(context: Context?){
+        context?.database?.use {
+            val result = select(EventResponse.TABLE_FAVORITE)
+            val favorite = result.parseList(classParser<EventResponse>())
+            val list= ArrayList<EventResponse>()
+            list.addAll(favorite)
+            listFavoriteEvents.postValue(list)
+        }
+    }
+
     fun getNextEvent(): LiveData<ArrayList<EventResponse>> = listNextEvents
     fun getLastEvent(): LiveData<ArrayList<EventResponse>> = listLastEvents
+    fun getFavoriteEvent(): LiveData<ArrayList<EventResponse>> = listFavoriteEvents
 
     override fun onCleared() {
         super.onCleared()

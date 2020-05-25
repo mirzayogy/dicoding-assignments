@@ -2,6 +2,7 @@ package com.mirzayogy.footballleague.data.source.local.sqlite
 
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
+import com.mirzayogy.footballleague.data.source.remote.response.EventResponse
 import org.jetbrains.anko.db.*
 
 class MyDatabaseOpenHelper(ctx: Context) : ManagedSQLiteOpenHelper(ctx, "FavoriteTeam.db", null, 1) {
@@ -19,21 +20,21 @@ class MyDatabaseOpenHelper(ctx: Context) : ManagedSQLiteOpenHelper(ctx, "Favorit
 
     override fun onCreate(db: SQLiteDatabase) {
         // Here you create tables
-        db.createTable(Favorite.TABLE_FAVORITE, true,
-            Favorite.ID_EVENT to INTEGER + PRIMARY_KEY + AUTOINCREMENT,
-            Favorite.STR_HOME_TEAM to TEXT,
-            Favorite.ID_HOME_TEAM to TEXT,
-            Favorite.INT_HOME_SCORE to TEXT,
-            Favorite.STR_HOME_GOAL_DETAILS to TEXT,
-            Favorite.STR_AWAY_TEAM to TEXT,
-            Favorite.ID_AWAY_TEAM to TEXT,
-            Favorite.INT_AWAY_SCORE to TEXT,
-            Favorite.STR_AWAY_GOAL_DETAILS to TEXT,
-            Favorite.INT_SPECTATORS to TEXT,
-            Favorite.DATE_EVENT to TEXT,
-            Favorite.STR_TIME to TEXT,
-            Favorite.STR_EVENT to TEXT,
-            Favorite.STR_LEAGUE to TEXT)
+        db.createTable(EventResponse.TABLE_FAVORITE, true,
+            EventResponse.ID_EVENT to INTEGER + PRIMARY_KEY + AUTOINCREMENT,
+            EventResponse.STR_HOME_TEAM to TEXT,
+            EventResponse.ID_HOME_TEAM to TEXT,
+            EventResponse.INT_HOME_SCORE to TEXT,
+            EventResponse.STR_HOME_GOAL_DETAILS to TEXT,
+            EventResponse.STR_AWAY_TEAM to TEXT,
+            EventResponse.ID_AWAY_TEAM to TEXT,
+            EventResponse.INT_AWAY_SCORE to TEXT,
+            EventResponse.STR_AWAY_GOAL_DETAILS to TEXT,
+            EventResponse.INT_SPECTATORS to TEXT,
+            EventResponse.DATE_EVENT to TEXT,
+            EventResponse.STR_TIME to TEXT,
+            EventResponse.STR_EVENT to TEXT,
+            EventResponse.STR_LEAGUE to TEXT)
     }
 
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {

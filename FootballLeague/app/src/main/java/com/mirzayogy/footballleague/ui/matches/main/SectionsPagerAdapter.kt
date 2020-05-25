@@ -8,7 +8,8 @@ import com.mirzayogy.footballleague.R
 
 private val TAB_TITLES = arrayOf(
     R.string.next_match,
-    R.string.previous_match
+    R.string.previous_match,
+    R.string.favorite_match
 )
 
 class SectionsPagerAdapter(private val context: Context, private val idLeague: String, fm: FragmentManager) :
@@ -23,6 +24,6 @@ class SectionsPagerAdapter(private val context: Context, private val idLeague: S
     }
 
     override fun getCount(): Int {
-        return 2
+        return 3
     }
 }
