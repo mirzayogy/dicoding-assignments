@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aplikasi Asesmen Anak Berkebutuhan Khusus (APBAKUS)</title>
+    <link rel="stylesheet" href="assets/styles/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <header>
+        <div class="jumbotron">
+            <h1>Apbakus</h1>
+            <p>Aplikasi Android yang dikembangkan untuk membantu kegiatan Guru Pendamping Khusus (GPK) dalam kegiatan asesmen Anak Berkebutuhan Khusus (ABK) pada sekolah inklusi</p>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#tim">Tim</a></li>
+                <li><a href="#mitra">Mitra</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <div id="content">
+            <article id="tim" class="card">
+                <h2>Tim</h2>
+                <img src="assets/img/tim.jpg" class="featured-image" id="myImage" alt="tim">
+                
+                <p>Kegiatan ini dimulai dari hibah Penelitian Dosen Pemula tahun 2017 yang dimenangkan oleh Mirza Yogy Kurniawan (paling kanan), dengan judul yang serupa. Tahun berikutnya kegiatan dilanjutkan dalam hibah Program Kemitraan Masyarakat (PKM) yang dimenangkan oleh Fathul Hafidh (nomor dua dari kanan) </p>
+            </article>
+            
+            <article id="mitra" class="card">
+                <h2>Mitra</h2>
+                <p>Pada kegiatan PKM ini ada 2 (dua) sekolah yang digandeng sebagai mitra. yaitu SDN Keraton 4 Martapura yang memiliki status sekolah inklusi, dan SDNLB 2 Sungai Paring yang memang bergerak dibidang pendidikan Anak Berkebutuhan Khusus (ABK)</p>
+                <section>
+                    <h3>SDN Keraton 4 Martapura</h3>
+                    <img src="assets/img/mitra1.jpg"  class="featured-image" alt="farm house">
+                    <p>Berada di jalur utama Bandung-Lembang, Farm House menjadi objek wisata yang tidak pernah sepi pengunjung. Selain karena letaknya strategis, kawasan ini juga menghadirkan nuansa wisata khas Eropa. Semua itu diterapkan dalam bentuk spot swafoto Instagramable.</p>
+                </section>
+                <section>
+                    <h3>SDNLB 2 Sungai Paring</h3>
+                    <img src="assets/img/mitra2.jpg"  class="featured-image"  alt="farm house">
+                    <p>Berada di jalur utama Bandung-Lembang, Farm House menjadi objek wisata yang tidak pernah sepi pengunjung. Selain karena letaknya strategis, kawasan ini juga menghadirkan nuansa wisata khas Eropa. Semua itu diterapkan dalam bentuk spot swafoto Instagramable.</p>
+                </section>
+            </article>
+            
+        </div>
+        <aside>
+            <article>
+                <header>
+                    <h2>Profil</h2>
+                    <p>Mirza Yogy Kurniawan</p>
+                    <figure>
+                        <img src="assets/img/fb.jpg">   
+                    </figure>
+                </header>
+                <section>
+                    <h3>Informasi Lainnya</h3>
+                    <table>
+                        <tr>
+                            <th>Facebook</th>
+                            <td><a href="https://www.facebook.com/mirza.yogy"><i class="fa fa-facebook-square" style="font-size: 48px;"></i></a></td>
+                        </tr>
+                        <tr>
+                            <th>Twitter</th>
+                            <td><a href="https://twitter.com/mirzayogy"><i class="fa fa-twitter-square" style="font-size: 48px;"></i></a></td>
+                        </tr>
+                        <tr>
+                            <th>GitHub</th>
+                            <td><a href="https://github.com/mirzayogy"><i class="fa fa-github-square" style="font-size: 48px;"></i></a></td>
+                        </tr>
+                    </table>
+                </section>
+            </article>
+        </aside>
+    </main>
+    
+    <footer>
+        <p>Belajar Dasar Pemrograman Web &#169; 2019, Dicoding Academy</p>
+    </footer>
+    
+    <div id="myModal" class="modal">
+        <span class="close">&times;</span>
+        <img class="modal-image" id="img01">
+        <div id="caption"></div>
+    </div>
+    
+    <script>
+        var modal = document.getElementById('myModal');
+        
+        var modalImg = document.getElementById("img01");
+        var captionText = document.getElementById("caption");
+                
+        var span = document.getElementsByClassName("close")[0];
+        
+        span.onclick = function() { 
+            modal.style.display = "none";
+        }
+        
+        document.body.onclick= function(e){
+            e=window.event? event.srcElement: e.target;
+            if(e.className && e.className.indexOf('featured-image')!=-1){
+                modal.style.display = "block";
+                modalImg.src = e.src;
+                captionText.innerHTML = e.alt;
+            }
+        }
+    </script>
+    
+</body>
+</html>
+
