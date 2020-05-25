@@ -1,20 +1,16 @@
 package com.mirzayogy.footballleague.ui.search
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.View
-import android.widget.ProgressBar
 import android.widget.SearchView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.mirzayogy.footballleague.R
 import kotlinx.android.synthetic.main.activity_search.*
-import kotlinx.android.synthetic.main.fragment_matches.*
 import kotlinx.android.synthetic.main.fragment_matches.progressBar
-import kotlinx.android.synthetic.main.fragment_matches.recyclerView
-import org.jetbrains.anko.startActivity
 
 class SearchActivity : AppCompatActivity() {
 

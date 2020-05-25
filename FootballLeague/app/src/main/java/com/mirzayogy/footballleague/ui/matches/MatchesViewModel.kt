@@ -1,18 +1,15 @@
 package com.mirzayogy.footballleague.ui.matches
 
-import android.app.Application
 import android.content.Context
 import android.util.Log
-import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.mirzayogy.footballleague.data.source.local.entity.EventEntityResponse
-import com.mirzayogy.footballleague.data.source.local.sqlite.Favorite
 import com.mirzayogy.footballleague.data.source.local.sqlite.database
+import com.mirzayogy.footballleague.data.source.remote.RetrofitRepository
 import com.mirzayogy.footballleague.data.source.remote.RetrofitServices
 import com.mirzayogy.footballleague.data.source.remote.response.EventResponse
-import com.mirzayogy.footballleague.data.source.remote.RetrofitRepository
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers

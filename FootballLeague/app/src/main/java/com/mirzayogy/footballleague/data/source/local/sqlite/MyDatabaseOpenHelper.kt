@@ -39,7 +39,7 @@ class MyDatabaseOpenHelper(ctx: Context) : ManagedSQLiteOpenHelper(ctx, "Favorit
 
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
         // Here you can upgrade tables, as usual
-        db.dropTable(Favorite.TABLE_FAVORITE, true)
+        db.dropTable(EventResponse.TABLE_FAVORITE, true)
     }
 }
 

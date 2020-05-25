@@ -6,7 +6,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.mirzayogy.footballleague.data.source.remote.RetrofitRepository
 import com.mirzayogy.footballleague.data.source.remote.RetrofitServices
-import com.mirzayogy.footballleague.data.source.remote.response.EventResponse
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
@@ -18,11 +17,6 @@ class MatchesDetailViewModel : ViewModel() {
     private lateinit var idTeam: String
     private var strHomeBadge= MutableLiveData<String>()
     private var strAwayBadge= MutableLiveData<String>()
-
-
-    fun setIdTeam(idTeam:String){
-        this.idTeam = idTeam
-    }
 
     fun setStrHomeBadge(idTeam:String){
         this.retrofitServices = RetrofitRepository.createRX()

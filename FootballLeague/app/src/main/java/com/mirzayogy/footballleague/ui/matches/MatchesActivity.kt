@@ -2,10 +2,7 @@ package com.mirzayogy.footballleague.ui.matches
 
 import android.os.Bundle
 import android.view.Menu
-import android.view.MenuInflater
-import android.view.MenuItem
 import android.widget.SearchView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager.widget.ViewPager
 import com.bumptech.glide.Glide
@@ -62,7 +59,7 @@ class MatchesActivity : AppCompatActivity() {
         super.onCreateOptionsMenu(menu)
         menuInflater.inflate(R.menu.top_menu, menu)
 
-        val searchView = menu?.findItem(R.id.search)?.actionView as SearchView?
+        val searchView = menu.findItem(R.id.search)?.actionView as SearchView?
 
         searchView?.queryHint = "Search matches"
 

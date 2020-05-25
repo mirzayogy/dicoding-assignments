@@ -1,21 +1,15 @@
 package com.mirzayogy.footballleague.ui.matches.main
 
 import android.os.Bundle
-import android.util.EventLog
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
 import android.widget.ProgressBar
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.mirzayogy.footballleague.R
-import com.mirzayogy.footballleague.data.source.local.sqlite.Favorite
-import com.mirzayogy.footballleague.data.source.remote.response.EventResponse
 import com.mirzayogy.footballleague.ui.matches.MatchesViewModel
 import kotlinx.android.synthetic.main.fragment_matches.*
 
@@ -113,5 +107,10 @@ class PlaceholderFragment : Fragment() {
                 }
             }
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        matchesViewModel.setFavoriteEvent(context)
     }
 }

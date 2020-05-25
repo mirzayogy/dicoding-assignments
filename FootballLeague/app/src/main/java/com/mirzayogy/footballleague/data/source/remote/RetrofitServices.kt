@@ -3,13 +3,10 @@ package com.mirzayogy.footballleague.data.source.remote
 import com.mirzayogy.footballleague.data.source.local.entity.EventEntityResponse
 import com.mirzayogy.footballleague.data.source.local.entity.EventSearchResponse
 import com.mirzayogy.footballleague.data.source.local.entity.TeamEntityResponse
-import com.mirzayogy.footballleague.data.source.remote.response.EventResponse
-import com.mirzayogy.footballleague.data.source.remote.response.TeamResponse
+import io.reactivex.Observable
 import retrofit2.Call
-import retrofit2.http.*
-import io.reactivex.Observable;
-import io.reactivex.Single
-import kotlin.collections.ArrayList
+import retrofit2.http.GET
+import retrofit2.http.Query
 
 interface RetrofitServices {
 
