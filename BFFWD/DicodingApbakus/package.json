@@ -7,7 +7,7 @@
     "build": "webpack --config webpack.prod.js",
     "start-dev": "webpack-dev-server --config webpack.dev.js"
   },
-  "author": "dimas_saputra <dimas.maulanads@gmail.com>",
+  "author": "mirza_yogy_kurniawan <mirza.yogy@gmail.com>",
   "license": "ISC",
   "devDependencies": {
     "@babel/core": "^7.7.7",
