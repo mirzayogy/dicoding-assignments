@@ -1,3 +1,5 @@
+import './anak-list.js';
+
 function main() {
   
   const baseUrl = "http://apbakus.id/api/anak";
@@ -125,23 +127,26 @@ function main() {
   */
   
   const renderAllAnaks = (records) => {
-    const listAnakElement = document.querySelector("#listAnak");
-    listAnakElement.innerHTML = "";
+    // const listAnakElement = document.querySelector("#listAnak");
+    const listAnakElement = document.querySelector("anak-list");
+
+    listAnakElement.anaks = records
+    // listAnakElement.innerHTML = "";
     
-    records.forEach(anak => {
-      listAnakElement.innerHTML += `
-      <div class="col-lg-4 col-md-6 col-sm-12" style="margin-top: 12px;">
-      <div class="card">
-      <div class="card-body">
-      <h5>(${anak.id}) ${anak.nama_lengkap}</h5>
-      <p>${anak.nama_ortu}</p>
-      <button type="button" class="btn btn-primary button-edit" id="${anak.id}">Edit</button>
-      <button type="button" class="btn btn-danger button-delete" id="${anak.id}">Hapus</button>
-      </div>
-      </div>
-      </div>
-      `;
-    });
+    // records.forEach(anak => {
+    //   listAnakElement.innerHTML += `
+    //   <div class="col-lg-4 col-md-6 col-sm-12" style="margin-top: 12px;">
+    //   <div class="card">
+    //   <div class="card-body">
+    //   <h5>(${anak.id}) ${anak.nama_lengkap}</h5>
+    //   <p>${anak.nama_ortu}</p>
+    //   <button type="button" class="btn btn-primary button-edit" id="${anak.id}">Edit</button>
+    //   <button type="button" class="btn btn-danger button-delete" id="${anak.id}">Hapus</button>
+    //   </div>
+    //   </div>
+    //   </div>
+    //   `;
+    // });
     
     const buttons = document.querySelectorAll(".button-delete");
     buttons.forEach(button => {
