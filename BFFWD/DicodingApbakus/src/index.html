@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Apbakus</title>
+</head>
+<body>
+<header>
+    <nav class="navbar navbar-dark bg-primary">
+        <span class="navbar-brand mb-0 h1">Apbakus</span>
+    </nav>
+</header>
+<main class="container">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="card-title">Input Anak</h5>
+                </div>
+                <div class="card-body">
+                    <div class="form-group">
+                        <label for="id_anak">ID Anak</label>
+                        <input id="id_anak" type="number" class="form-control" placeholder="ID Anak" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="nama_lengkap">Nama Lengkap</label>
+                        <input id="nama_lengkap" type="text" class="form-control" placeholder="Nama Lengkap">
+                    </div>
+                    <div class="form-group">
+                        <label for="nama_panggilan">Nama Panggilan</label>
+                        <input id="nama_panggilan" type="text" class="form-control" placeholder="Nama Panggilan">
+                    </div>
+                    <div class="form-group">
+                    <div class="form-check">
+                        
+                        <input class="form-check-input" type="radio" name="jenis_kelamin" id="laki-laki" value="Laki-laki" checked>
+                        <label class="form-check-label" for="laki-laki">
+                            Laki-laki
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="jenis_kelamin" id="perempuan" value="Perempuan">
+                        <label class="form-check-label" for="perempuan">
+                            Perempuan
+                        </label>
+                    </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="tanggal_lahir">Tanggal Lahir</label>
+                        <input id="tanggal_lahir" type="date" class="form-control" placeholder="Tanggal Lahir">
+                    </div>
+                    <div class="form-group">
+                        <label for="nama_ortu">Nama Orang Tua</label>
+                        <input id="nama_ortu" type="text" class="form-control" placeholder="Nama Orang Tua">
+                    </div>
+                    <div class="form-group">
+                        <label for="alamat">Alamat</label>
+                        <input id="alamat" type="text" class="form-control" placeholder="Alamat">
+                    </div>
+                    <div class="form-group">
+                        <label for="no_kontak">Nomor Kontak</label>
+                        <input id="no_kontak" type="text" class="form-control" placeholder="Nomor Kontak">
+                    </div>
+                    <div class="form-group">
+                        <label for="id_sekolah">Sekolah</label>
+                        <select class="form-control" id="id_sekolah">
+                            <option>- Pilih Sekolah -</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <button id="buttonSave" class="btn btn-success">Save</button>
+                        <button id="buttonUpdate" class="btn btn-primary">Update</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="listAnak" class="row"></div>
+</main>
+<script src="index.js"></script>
+</body>
+</html>
