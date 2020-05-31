@@ -26,6 +26,7 @@
   <div class="body-content container"></div>
 
   <script src="js/materialize.min.js"></script>
+  <script src="js/api.js"></script>
   <script src="js/script.js"></script>
   <script>
   // REGISTER SERVICE WORKER
@@ -42,6 +43,11 @@
   } else {
     console.log("ServiceWorker belum didukung browser ini.")
   }
+
+  // REQUEST API UNTUK PERTAMA KALI
+    document.addEventListener("DOMContentLoaded", function () {
+      getArticles();
+    });
   </script>
 </body>
 </html>
